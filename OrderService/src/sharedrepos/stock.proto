@@ -1,0 +1,17 @@
+syntax ="proto3";
+package stock;
+
+message Product {
+    int32 id = 1;
+    int32 qty = 2;
+}
+
+message Products {
+    repeated Product product= 1;
+}
+message Empty {
+
+}
+service Stock {
+    rpc ClientStock(stream Product) returns(Empty);
+}
