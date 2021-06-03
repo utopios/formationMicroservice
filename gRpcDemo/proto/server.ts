@@ -1,8 +1,8 @@
 import { ExampleHandlers } from "./example_package/Example"
-import grpc from "@grpc/grpc-js"
+import * as grpc from "@grpc/grpc-js"
 import {Response} from "./example_package/Response"
 import {Request} from "./example_package/Request"
-import protoLoader from "@grpc/proto-loader"
+import * as protoLoader from "@grpc/proto-loader"
 import {ProtoGrpcType} from "./example"
 const host = "0.0.0.0:9090"
 
@@ -15,6 +15,7 @@ const serverHandler : ExampleHandlers = {
 
         call.on('data', (request:Request) => {
             //Logique metier après chaques request du serveur
+            console.log(request)
         })
 
         call.on('end', () => {
@@ -23,6 +24,7 @@ const serverHandler : ExampleHandlers = {
     },
 
     ClientStream(call:grpc.ServerReadableStream<Request,Response>) {
+        console.log("client stream")
         call.on('data', (request:Request) => {
             console.log(request)
         })
