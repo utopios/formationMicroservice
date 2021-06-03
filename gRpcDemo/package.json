@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:proto": "proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=proto/ *.proto",
-    "start": "tsc"
+    "start": "tsc && cd dist && node server.js && node client.js"
   },
   "author": "",
   "license": "ISC"
