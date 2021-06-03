@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+    product-service-1:
+        build: ./ProductService
+        environment: 
+            - "PORT:8080"
+        ports: 
+            - "8080:8080"
