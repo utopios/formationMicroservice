@@ -1,12 +1,20 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { OrderInterface } from './interfaces/order.interface';
+import { KafkaService } from './services/kafka.service';
+import { OrderService } from './services/order.service';
+import { TOPIC_ORDER_CREATED } from './tools/const.topic';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly orderService: OrderService, private kafkaService:KafkaService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Post()
+  postOrder(@Body() order : OrderInterface) {
+      //par facilité pour le tp
+      order.status = "CREATED"
+      this.orderService.create(order).then(res => {
+        const dataSend = {...order, id:res.id}
+        this.kafkaService.producer.send({topic : String(TOPIC_ORDER_CREATED), messages : [{key : dataSend.id, value : JSON.stringify(dataSend)}]})
+      })
   }
 }

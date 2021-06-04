@@ -2,11 +2,11 @@ FROM node:10-alpine
 
 WORKDIR /app
 
-COPY . .
+COPY . /app/src
 
 RUN npm install
 
-RUN tsc
+RUN npm build
 
 
-CMD ["node", "main.js"]
+CMD ["node", "dist/main.js"]
