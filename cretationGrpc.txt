@@ -1,0 +1,2 @@
+1 --- proto
+stock.proto
