@@ -1,4 +1,5 @@
 node_modules
+kafka/docker-compose/full-stack
 */node_modules
 dist
 */dist
