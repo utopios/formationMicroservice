@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Order, OrderShema } from './models/order.model';
 import { KafkaService } from './services/kafka.service';
+import { OrderService } from './services/order.service';
 
 @Module({
   imports: [
@@ -13,6 +14,6 @@ import { KafkaService } from './services/kafka.service';
     ])
   ],
   controllers: [AppController],
-  providers: [KafkaService],
+  providers: [KafkaService, OrderService],
 })
 export class AppModule {}

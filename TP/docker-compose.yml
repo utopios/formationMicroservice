@@ -42,10 +42,10 @@ services:
         build: ./kafkaconfig/
         links: 
             - kafka1
-    # order:
-    #     build: ./order/
-    #     links: 
-    #         - kafka1
+    order:
+        build: ./order/
+        links: 
+            - kafka1
     # payment:
     #     build: ./payment/
     #     links: 
