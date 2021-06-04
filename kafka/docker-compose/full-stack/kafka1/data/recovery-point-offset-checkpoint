@@ -11,7 +11,7 @@ __consumer_offsets 9 0
 __consumer_offsets 46 0
 __consumer_offsets 25 0
 __consumer_offsets 35 0
-notification 0 0
+notification 0 13
 __consumer_offsets 41 0
 __consumer_offsets 33 0
 __consumer_offsets 23 0
@@ -21,7 +21,7 @@ __consumer_offsets 16 0
 __consumer_offsets 28 0
 __consumer_offsets 31 0
 __consumer_offsets 36 0
-__consumer_offsets 42 0
+__consumer_offsets 42 10
 __consumer_offsets 3 0
 __consumer_offsets 18 0
 __consumer_offsets 37 0
@@ -38,7 +38,7 @@ __consumer_offsets 2 0
 __consumer_offsets 43 0
 __consumer_offsets 6 0
 __consumer_offsets 14 0
-data-service 0 0
+data-service 0 4
 __consumer_offsets 20 0
 __consumer_offsets 0 0
 __consumer_offsets 44 0

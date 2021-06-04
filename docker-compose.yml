@@ -5,5 +5,12 @@ services:
         build: ./ProductService
         environment: 
             - "PORT:8080"
+            - "HOST_ORDER:order-service-1"
         ports: 
             - "8080:8080"
+        # links: 
+        #     - order-service-1
+    
+    order-service-1:
+        build: ./OrderService
+
