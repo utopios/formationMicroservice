@@ -46,12 +46,14 @@ services:
         build: ./order/
         links: 
             - kafka1
-    # payment:
-    #     build: ./payment/
-    #     links: 
-    #         - kafka1
-    # orchestrator:
-    #     build: ./orchestrator/
-    #     links: 
-    #         - kafka1
+        ports: 
+            - "3000:3000"
+    payment:
+        build: ./payment/
+        links: 
+            - kafka1
+    orchestrator:
+        build: ./orchestrator/
+        links: 
+            - kafka1
     
