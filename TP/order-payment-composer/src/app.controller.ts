@@ -1,5 +1,4 @@
 import { Controller, Get } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
 import { AppService } from './app.service';
 
 @Controller()
@@ -11,8 +10,9 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @MessagePattern({cmd:'getPayment'})
-  getPayment(payload:any) {
-    return {payment : {}}
+  @Get('/order')
+  getOrder() {
+    return this.appService.getAll()
   }
+
 }

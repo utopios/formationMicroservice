@@ -52,6 +52,12 @@ services:
         build: ./payment/
         links: 
             - kafka1
+        ports: 
+            - "3001:3001"
+    order-payment-composer:
+        build: ./order-payment-comoser/
+        ports: 
+            - "3010:3010"
     orchestrator:
         build: ./orchestrator/
         links: 

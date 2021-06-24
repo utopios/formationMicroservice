@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { MessagePattern } from '@nestjs/microservices';
 import { OrderInterface } from './interfaces/order.interface';
 import { KafkaService } from './services/kafka.service';
 import { OrderService } from './services/order.service';
@@ -16,5 +17,10 @@ export class AppController {
         const dataSend = {...order, id:res.id}
         this.kafkaService.producer.send({topic : String(TOPIC_ORDER_CREATED), messages : [{key : dataSend.id, value : JSON.stringify(dataSend)}]})
       })
+  }
+
+  @MessagePattern({cmd:'getOrder'})
+  getOrder(payload:any) {
+    return {order : {}}
   }
 }
