@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { AppService } from './app.service';
 import axios from "axios"
-import { addressesMap } from './address.config';
+import * as addressesMap from "./address.json"
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -32,12 +32,14 @@ export class AppController {
   @Get(':api')
   async getApi(@Param() params) {
       const result = await axios.get(addressesMap[params.api])
+      console.log(params.api)
       return result.data
   }
 
   @Post(':api')
   async postApi(@Param() params, @Body() data:any) {
-      const result = await axios.get(addressesMap[params.api], data)
+      const result = await axios.post(addressesMap[params.api], data)
+     
       return result.data
   }
 }
