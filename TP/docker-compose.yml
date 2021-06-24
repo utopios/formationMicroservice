@@ -55,7 +55,7 @@ services:
         ports: 
             - "3001:3001"
     order-payment-composer:
-        build: ./order-payment-comoser/
+        build: ./order-payment-composer/
         ports: 
             - "3010:3010"
     orchestrator:

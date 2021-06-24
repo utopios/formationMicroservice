@@ -1,0 +1,6 @@
+{
+  "timezone": "Asia/Hong_Kong",
+  "schedule": "before 6am",
+  "automerge": true,
+  "extends": ["config:base"]
+}
