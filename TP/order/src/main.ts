@@ -7,9 +7,11 @@ async function bootstrap() {
     transport : Transport.TCP,
     options : {
       host : '127.0.0.1',
-      port : 3000
+      port : 3002
     }
   });
   app.listen(() => {console.log("order connected")})
+  const app2 = await NestFactory.create(AppModule);
+  app2.listen(3000)
 }
 bootstrap();
