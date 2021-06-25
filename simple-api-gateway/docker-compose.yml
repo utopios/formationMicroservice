@@ -40,6 +40,8 @@ services:
         build: ./register-service-api/
         ports: 
             - "3010:3010"
+        depends_on:
+            - etcd
     app-1:
         build: ./app-1/
         depends_on: 
@@ -61,6 +63,13 @@ services:
             - register
         ports: 
             - "3000:3000"
+    etcd:
+        image: bitnami/etcd:latest
+        ports: 
+            - "2379:2379"
+            - "2380:2380"
+        environment: 
+            - ALLOW_NONE_AUTHENTICATION:yes
         # healthcheck:
         #     test: ["curl","http://"]
         #     interval: 10s
