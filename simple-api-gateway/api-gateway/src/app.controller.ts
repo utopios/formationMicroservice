@@ -1,10 +1,11 @@
 import { Body, Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { AppService } from './app.service';
 import axios from "axios"
-import * as addressesMap from "./address.json"
+import { KafkaService } from './services/kafka.service';
+
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService, private kafkaService: KafkaService) {}
 
   // @Get('/app-1')
   // async getApp1() {
@@ -31,14 +32,14 @@ export class AppController {
 
   @Get(':api')
   async getApi(@Param() params) {
-      const result = await axios.get(addressesMap[params.api])
+      const result = await axios.get(this.kafkaService.mapperServices[params.api])
       console.log(params.api)
       return result.data
   }
 
   @Post(':api')
   async postApi(@Param() params, @Body() data:any) {
-      const result = await axios.post(addressesMap[params.api], data)
+      const result = await axios.post(this.kafkaService.mapperServices[params.api], data)
      
       return result.data
   }
