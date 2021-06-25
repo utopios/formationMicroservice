@@ -28,7 +28,9 @@ export class KafkaService implements OnModuleInit {
         const data = {
             name : 'app-1',
             host : this.getLocalIp(),
-            port : process.env.PORT || 3001
+            port : process.env.PORT || 3001,
+            healthCheckAddress :'/healthy',
+            timesInterval : 3000
         }
         try {
             const res = await axios.post('register:3010/register', data)       
