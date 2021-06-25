@@ -13,24 +13,24 @@ export class KafkaService implements OnModuleInit {
 
     }
     constructor() {
-        this.kafkaClient = new Kafka({
-            brokers : ['kafka1:9092']
-        })
-        this.consumer = this.kafkaClient.consumer() 
+        // this.kafkaClient = new Kafka({
+        //     brokers : ['kafka1:9092']
+        // })
+        // this.consumer = this.kafkaClient.consumer() 
     }
 
 
     async onModuleInit() {
-        await this.consumer.connect()
+        // await this.consumer.connect()
 
-        this.consumer.subscribe({topic:'NEW_MICRO_SERVICE'})
+        // this.consumer.subscribe({topic:'NEW_MICRO_SERVICE'})
 
-        this.consumer.run({
-            eachMessage : async (data) => {
-                const service = JSON.parse(data.message.value.toString())
-                this.mapperServices[service.name] = `${service.address}:${service.port}`
-            }
-        })
+        // this.consumer.run({
+        //     eachMessage : async (data) => {
+        //         const service = JSON.parse(data.message.value.toString())
+        //         this.mapperServices[service.name] = `${service.address}:${service.port}`
+        //     }
+        // })
     }
 
     getLocalIp() {
